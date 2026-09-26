@@ -296,9 +296,13 @@
         <span id="syncLight" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ccc;margin-right:6px"></span>
         <span id="syncStatus">未登录</span>
       </div>
+      <div id="quotaInfo" style="margin-bottom:12px;font-size:13px;color:hsl(30,6%,45%);display:none">
+        云空间：<span id="quotaText">N/A</span>
+      </div>
       <div class="form-actions">
         <button class="btn btn-primary" id="syncLoginBtn" onclick="doLogin()">登录同步</button>
         <button class="btn btn-secondary" id="syncDiagBtn" onclick="runDiag()">诊断</button>
+        <button class="btn btn-secondary" onclick="refreshToken()">🔑 刷新Token</button>
       </div>
       <pre id="diagResult" style="display:none;background:hsl(40,20%,94%);padding:10px;border-radius:8px;font-size:12px;max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:10px"></pre>
     </div>
@@ -635,9 +639,45 @@
           "\n过期: " + (exp?new Date(Number(exp)).toLocaleString():"无");
       }catch(e){ el.textContent = "诊断失败: "+e.message; }
     }
+    function formatBytes(b){
+      if(!b) return "0 B";
+      if(b>=1073741824) return (b/1073741824).toFixed(1)+" GB";
+      if(b>=1048576) return (b/1048576).toFixed(1)+" MB";
+      return (b/1024).toFixed(0)+" KB";
+    }
+    async function refreshToken(){
+      const el = document.getElementById("diagResult");
+      el.style.display = "block";
+      el.textContent = "正在刷新 Token…";
+      const ok = await refreshAccessToken();
+      el.textContent = ok ? "✅ Token 刷新成功" : "❌ 刷新失败，请重新登录";
+      if(ok) loadQuota();
+    }
+    async function loadQuota(){
+      const box = document.getElementById("quotaInfo");
+      const txt = document.getElementById("quotaText");
+      const token = localStorage.getItem("tanchiNotesMSAToken");
+      if(!token){ box.style.display="none"; return; }
+      box.style.display="";
+      txt.textContent = "加载中…";
+      try{
+        let resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", { headers:{Authorization:"Bearer "+token} });
+        if(resp.status===401 && typeof refreshAccessToken==="function"){
+          await refreshAccessToken();
+          const t2 = localStorage.getItem("tanchiNotesMSAToken");
+          resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", { headers:{Authorization:"Bearer "+t2} });
+        }
+        if(!resp.ok){ txt.textContent = "N/A"; return; }
+        const d = await resp.json();
+        const q = d.quota;
+        if(!q||!q.total){ txt.textContent="N/A"; return; }
+        txt.textContent = formatBytes(q.used||0)+" / "+formatBytes(q.total)+"（"+Math.round((q.used||0)/q.total*100)+"%）";
+      }catch(e){ txt.textContent = "N/A"; }
+    }
     if(typeof onSyncStateChange==="function") onSyncStateChange(updateSyncUI);
     if(isLoggedIn() && typeof syncPull==="function") syncPull(updateSyncUI);
     updateSyncUI();
+    if(isLoggedIn()) loadQuota();
   </script>
 </body>
 </html>
