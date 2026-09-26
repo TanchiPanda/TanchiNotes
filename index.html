@@ -1457,5 +1457,12 @@
     render();
   })();
   </script>
+  <script src="auth.js"></script>
+  <script src="sync.js"></script>
+  <script>
+    if(isLoggedIn() && typeof syncPull==="function") syncPull();
+    var _origSave = save;
+    save = function(key, val){ _origSave(key, val); if(typeof syncPushDebounced==="function" && key==="memo_app_notes") syncPushDebounced(1500); };
+  </script>
 </body>
 </html>

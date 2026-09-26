@@ -288,6 +288,21 @@
       <button class="btn btn-danger" id="clearBtn">清空所有笔记</button>
     </div>
 
+    <!-- 云同步 -->
+    <div class="card">
+      <div class="card-title">☁️ 云同步</div>
+      <p class="card-desc">使用微软 OneDrive 同步笔记，多设备自动同步。</p>
+      <div id="syncInfo" style="margin-bottom:12px;font-size:14px">
+        <span id="syncLight" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#ccc;margin-right:6px"></span>
+        <span id="syncStatus">未登录</span>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-primary" id="syncLoginBtn" onclick="doLogin()">登录同步</button>
+        <button class="btn btn-secondary" id="syncDiagBtn" onclick="runDiag()">诊断</button>
+      </div>
+      <pre id="diagResult" style="display:none;background:hsl(40,20%,94%);padding:10px;border-radius:8px;font-size:12px;max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:10px"></pre>
+    </div>
+
     <!-- 关于 -->
     <div class="card">
       <div class="card-title">ℹ️ 关于我们</div>
@@ -582,6 +597,46 @@
       }
     });
   })();
+  <script src="auth.js"></script>
+  <script src="sync.js"></script>
+  <script>
+    function doLogin(){ loginWithGitHub(); }
+    function updateSyncUI(){
+      const light = document.getElementById("syncLight");
+      const status = document.getElementById("syncStatus");
+      const btn = document.getElementById("syncLoginBtn");
+      if(isLoggedIn()){
+        const user = getGitHubUser();
+        const s = getSyncState();
+        if(s.state==="idle") light.style.background="#2ecc71";
+        else if(s.state==="syncing") light.style.background="#f39c12";
+        else if(s.state==="error") light.style.background="#e74c3c";
+        else light.style.background="#2ecc71";
+        status.textContent = (user?.name||"已登录") + (s.lastOk?" · "+s.lastOk:"");
+        btn.textContent = "退出";
+        btn.onclick = ()=>{ logout(); location.reload(); };
+      } else {
+        light.style.background="#ccc";
+        status.textContent = "未登录";
+        btn.textContent = "登录同步";
+        btn.onclick = doLogin;
+      }
+    }
+    async function runDiag(){
+      const el = document.getElementById("diagResult");
+      el.style.display = "block";
+      el.textContent = "诊断中…";
+      try{
+        const r = await syncDiagnose();
+        const token = localStorage.getItem("tanchiNotesMSAToken");
+        const exp = localStorage.getItem("tanchiNotesMSAExpires");
+        el.textContent = r + "\n---\nToken: " + (token?token.slice(0,20)+"…":"无") +
+          "\n过期: " + (exp?new Date(Number(exp)).toLocaleString():"无");
+      }catch(e){ el.textContent = "诊断失败: "+e.message; }
+    }
+    if(typeof onSyncStateChange==="function") onSyncStateChange(updateSyncUI);
+    if(isLoggedIn() && typeof syncPull==="function") syncPull(updateSyncUI);
+    updateSyncUI();
   </script>
 </body>
 </html>
