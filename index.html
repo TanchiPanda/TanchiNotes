@@ -771,7 +771,7 @@
         <div class="tag-list" id="tagList"></div>
         <a class="library-link" href="library.html" title="模板库">📚 模板库</a>
         <div class="sidebar-footer">
-          <div class="storage-info">
+          <div class="storage-info" id="storageInfo">
             <div class="storage-text">☁️ 笔记本空间（${notes.length}/${getMaxNotes()}篇）${notes.length >= EXPAND_THRESHOLD && !isExpanded ? '<button class="expand-btn" id="expandBtn">免费扩容</button>' : ''}${isExpanded ? '<span style="color:hsl(140,50%,35%);"> · 已扩容</span>' : ''}</div>
             <div class="storage-bar">
               <div class="storage-fill ${notes.length >= getMaxNotes() * 0.9 ? 'danger' : notes.length >= getMaxNotes() * 0.7 ? 'warn' : ''}" style="width: ${Math.min(notes.length / getMaxNotes() * 100, 100)}%"></div>
@@ -1463,6 +1463,38 @@
     if(isLoggedIn() && typeof syncPull==="function") syncPull();
     var _origSave = save;
     save = function(key, val){ _origSave(key, val); if(typeof syncPushDebounced==="function" && key==="memo_app_notes") syncPushDebounced(1500); };
+
+    function formatBytes(b){
+      if(b>=1073741824) return (b/1073741824).toFixed(1)+" GB";
+      if(b>=1048576) return (b/1048576).toFixed(1)+" MB";
+      return (b/1024).toFixed(0)+" KB";
+    }
+    async function updateStorageInfo(){
+      const el = document.getElementById("storageInfo");
+      if(!el) return;
+      const token = localStorage.getItem("tanchiNotesMSAToken");
+      if(!token) return;
+      try{
+        let resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", {
+          headers: { "Authorization": "Bearer " + token }
+        });
+        if(resp.status===401 && typeof refreshAccessToken==="function"){
+          await refreshAccessToken();
+          const t2 = localStorage.getItem("tanchiNotesMSAToken");
+          resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", {
+            headers: { "Authorization": "Bearer " + t2 }
+          });
+        }
+        if(!resp.ok) return;
+        const d = await resp.json();
+        const q = d.quota;
+        if(!q) return;
+        const pct = Math.round(q.used / q.total * 100);
+        el.innerHTML = '<div class="storage-text">☁️ OneDrive（'+formatBytes(q.used)+' / '+formatBytes(q.total)+'）</div>'+
+          '<div class="storage-bar"><div class="storage-fill '+(pct>=90?'danger':pct>=70?'warn':'')+'" style="width:'+pct+'%"></div></div>';
+      }catch(e){}
+    }
+    setTimeout(updateStorageInfo, 800);
   </script>
 </body>
 </html>
