@@ -772,9 +772,9 @@
         <a class="library-link" href="library.html" title="模板库">📚 模板库</a>
         <div class="sidebar-footer">
           <div class="storage-info" id="storageInfo">
-            <div class="storage-text">☁️ 笔记本空间（${notes.length}/${getMaxNotes()}篇）${notes.length >= EXPAND_THRESHOLD && !isExpanded ? '<button class="expand-btn" id="expandBtn">免费扩容</button>' : ''}${isExpanded ? '<span style="color:hsl(140,50%,35%);"> · 已扩容</span>' : ''}</div>
-            <div class="storage-bar">
-              <div class="storage-fill ${notes.length >= getMaxNotes() * 0.9 ? 'danger' : notes.length >= getMaxNotes() * 0.7 ? 'warn' : ''}" style="width: ${Math.min(notes.length / getMaxNotes() * 100, 100)}%"></div>
+            <div class="storage-text" id="storageText">☁️ 云空间 N/A</div>
+            <div class="storage-bar" id="storageBar" style="display:none">
+              <div class="storage-fill" id="storageFill" style="width:0%"></div>
             </div>
           </div>
           <a class="settings-link" href="settings.html" title="设置">⚙️ 设置</a>
@@ -1469,11 +1469,17 @@
       if(b>=1048576) return (b/1048576).toFixed(1)+" MB";
       return (b/1024).toFixed(0)+" KB";
     }
+    function setStorageNA(){
+      const t = document.getElementById("storageText");
+      const b = document.getElementById("storageBar");
+      if(t) t.innerHTML = "☁️ 云空间 N/A";
+      if(b) b.style.display = "none";
+    }
     async function updateStorageInfo(){
       const el = document.getElementById("storageInfo");
       if(!el) return;
       const token = localStorage.getItem("tanchiNotesMSAToken");
-      if(!token) return;
+      if(!token){ setStorageNA(); return; }
       try{
         let resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", {
           headers: { "Authorization": "Bearer " + token }
@@ -1485,14 +1491,22 @@
             headers: { "Authorization": "Bearer " + t2 }
           });
         }
-        if(!resp.ok) return;
+        if(!resp.ok){ setStorageNA(); return; }
         const d = await resp.json();
         const q = d.quota;
-        if(!q) return;
-        const pct = Math.round(q.used / q.total * 100);
-        el.innerHTML = '<div class="storage-text">☁️ OneDrive（'+formatBytes(q.used)+' / '+formatBytes(q.total)+'）</div>'+
-          '<div class="storage-bar"><div class="storage-fill '+(pct>=90?'danger':pct>=70?'warn':'')+'" style="width:'+pct+'%"></div></div>';
-      }catch(e){}
+        if(!q || !q.total){ setStorageNA(); return; }
+        const used = q.used || 0;
+        const total = q.total;
+        const pct = Math.round(used / total * 100);
+        const t = document.getElementById("storageText");
+        const b = document.getElementById("storageBar");
+        const f = document.getElementById("storageFill");
+        t.innerHTML = '☁️ OneDrive '+formatBytes(used)+' / '+formatBytes(total)+
+          ' <a href="https://onedrive.live.com/?id=517728A0E5F0B1D1%21111" target="_blank" style="color:#4ecdc4;font-size:11px">扩容</a>';
+        b.style.display = "";
+        f.style.width = pct + "%";
+        f.className = "storage-fill " + (pct>=90?"danger":pct>=70?"warn":"");
+      }catch(e){ setStorageNA(); }
     }
     setTimeout(updateStorageInfo, 800);
   </script>
