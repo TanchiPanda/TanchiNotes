@@ -2,9 +2,7 @@
 // 登录走 Supabase Auth；业务数据（积分/会员）仍存 Cloudflare D1，user_id 用邮箱。
 // 兼容原 msauth.js 的函数名（msLogin/msGetUser/msLogout/msHandleRedirect/msTakeReturnTo）。
 
-// ---------- 节点判断：country=cn 走中国大陆服务器，否则走国际/CF 节点 ----------
 function _detectChinaNode() {
-    // 1) URL 显式 ?country=cn 优先
     try {
         var p = new URLSearchParams(location.search || "");
         if (p.get("country") === "cn") {
@@ -16,7 +14,6 @@ function _detectChinaNode() {
             return false;
         }
     } catch (e) {}
-    // 2) 从 return URL 解析 country=cn（Word_Funny_Game 跳回时会带上）
     try {
         var p2 = new URLSearchParams(location.search || "");
         var ret = p2.get("return") || "";
@@ -25,7 +22,6 @@ function _detectChinaNode() {
             if (m) { try { sessionStorage.setItem("wordGameCountry", "cn"); } catch (e) {} return true; }
         }
     } catch (e) {}
-    // 3) 跳转/刷新后从 sessionStorage 恢复
     try {
         if (sessionStorage.getItem("wordGameCountry") === "cn") return true;
     } catch (e) {}
