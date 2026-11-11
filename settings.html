@@ -16,196 +16,39 @@
       justify-content: center;
       padding: 40px 20px;
     }
-    .settings-container {
-      width: 100%;
-      max-width: 520px;
-    }
-    .settings-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .back-btn {
-      width: 36px; height: 36px;
-      border: 1px solid hsl(35, 15%, 88%);
-      background: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex; align-items: center; justify-content: center;
-      color: hsl(30, 6%, 45%);
-      text-decoration: none;
-      transition: all 0.15s;
-    }
-    .back-btn:hover {
-      background: hsl(35, 20%, 94%);
-      color: hsl(30, 10%, 15%);
-    }
-    .settings-header h1 {
-      font-size: 22px;
-      font-weight: 600;
-    }
-    .card {
-      background: white;
-      border: 1px solid hsl(35, 15%, 88%);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-    .card-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .card-desc {
-      font-size: 13px;
-      color: hsl(30, 6%, 45%);
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-    .form-group {
-      margin-bottom: 16px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: hsl(30, 10%, 15%);
-    }
-    .form-input {
-      width: 100%;
-      height: 42px;
-      padding: 0 14px;
-      border: 1px solid hsl(35, 15%, 88%);
-      border-radius: 8px;
-      font-size: 14px;
-      outline: none;
-      background: hsl(40, 20%, 99%);
-      transition: border-color 0.15s;
-    }
-    .form-input:focus {
-      border-color: hsl(25, 55%, 48%);
-      background: white;
-    }
-    .form-input:disabled {
-      background: hsl(35, 20%, 94%);
-      color: hsl(30, 6%, 45%);
-      cursor: not-allowed;
-    }
-    .form-error {
-      color: hsl(0, 50%, 50%);
-      font-size: 13px;
-      margin-bottom: 12px;
-      min-height: 20px;
-    }
-    .form-success {
-      color: hsl(140, 50%, 35%);
-      font-size: 13px;
-      margin-bottom: 12px;
-      min-height: 20px;
-    }
-    .btn {
-      height: 42px;
-      padding: 0 24px;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .btn-primary {
-      background: hsl(25, 55%, 48%);
-      color: white;
-    }
-    .btn-primary:hover:not(:disabled) {
-      background: hsl(25, 55%, 42%);
-    }
-    .btn-primary:disabled {
-      background: hsl(35, 10%, 70%);
-      cursor: not-allowed;
-    }
-    .btn-secondary {
-      background: hsl(35, 20%, 94%);
-      color: hsl(30, 10%, 15%);
-    }
-    .btn-secondary:hover {
-      background: hsl(35, 15%, 88%);
-    }
-    .btn-danger {
-      background: hsl(0, 50%, 50%);
-      color: white;
-    }
-    .btn-danger:hover {
-      background: hsl(0, 50%, 42%);
-    }
-    .btn-danger:disabled {
-      background: hsl(0, 20%, 75%);
-      cursor: not-allowed;
-    }
-    .danger-card {
-      border-color: hsla(0, 50%, 50%, 0.2);
-    }
-    .form-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-    }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 12px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-weight: 500;
-    }
-    .status-set {
-      background: hsla(140, 50%, 35%, 0.1);
-      color: hsl(140, 50%, 30%);
-    }
-    .status-unset {
-      background: hsl(35, 20%, 94%);
-      color: hsl(30, 6%, 45%);
-    }
-    .divider {
-      height: 1px;
-      background: hsl(35, 15%, 88%);
-      margin: 20px 0;
-    }
-    .warning-text {
-      font-size: 12px;
-      color: hsl(30, 6%, 45%);
-      line-height: 1.6;
-      background: hsl(45, 80%, 96%);
-      border: 1px solid hsl(45, 60%, 85%);
-      border-radius: 8px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-    }
-    .info-text {
-      font-size: 12px;
-      color: hsl(30, 6%, 45%);
-      line-height: 1.6;
-    }
-    .source-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      margin-top: 12px;
-      font-size: 13px;
-      color: hsl(25, 55%, 48%);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .source-link:hover {
-      text-decoration: underline;
-    }
+    .settings-container { width: 100%; max-width: 520px; }
+    .settings-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+    .back-btn { width: 36px; height: 36px; border: 1px solid hsl(35, 15%, 88%); background: white; border-radius: 8px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: hsl(30, 6%, 45%); text-decoration: none; transition: all 0.15s; }
+    .back-btn:hover { background: hsl(35, 20%, 94%); color: hsl(30, 10%, 15%); }
+    .settings-header h1 { font-size: 22px; font-weight: 600; }
+    .card { background: white; border: 1px solid hsl(35, 15%, 88%); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .card-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .card-desc { font-size: 13px; color: hsl(30, 6%, 45%); margin-bottom: 20px; line-height: 1.6; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: hsl(30, 10%, 15%); }
+    .form-input { width: 100%; height: 42px; padding: 0 14px; border: 1px solid hsl(35, 15%, 88%); border-radius: 8px; font-size: 14px; outline: none; background: hsl(40, 20%, 99%); transition: border-color 0.15s; }
+    .form-input:focus { border-color: hsl(25, 55%, 48%); background: white; }
+    .form-input:disabled { background: hsl(35, 20%, 94%); color: hsl(30, 6%, 45%); cursor: not-allowed; }
+    .form-error { color: hsl(0, 50%, 50%); font-size: 13px; margin-bottom: 12px; min-height: 20px; }
+    .form-success { color: hsl(140, 50%, 35%); font-size: 13px; margin-bottom: 12px; min-height: 20px; }
+    .btn { height: 42px; padding: 0 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+    .btn-primary { background: hsl(25, 55%, 48%); color: white; }
+    .btn-primary:hover:not(:disabled) { background: hsl(25, 55%, 42%); }
+    .btn-primary:disabled { background: hsl(35, 10%, 70%); cursor: not-allowed; }
+    .btn-secondary { background: hsl(35, 20%, 94%); color: hsl(30, 10%, 15%); }
+    .btn-secondary:hover { background: hsl(35, 15%, 88%); }
+    .btn-danger { background: hsl(0, 50%, 50%); color: white; }
+    .btn-danger:hover { background: hsl(0, 50%, 42%); }
+    .btn-danger:disabled { background: hsl(0, 20%, 75%); cursor: not-allowed; }
+    .danger-card { border-color: hsla(0, 50%, 50%, 0.2); }
+    .form-actions { display: flex; gap: 10px; margin-top: 8px; }
+    .status-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+    .status-set { background: hsla(140, 50%, 35%, 0.1); color: hsl(140, 50%, 30%); }
+    .status-unset { background: hsl(35, 20%, 94%); color: hsl(30, 6%, 45%); }
+    .warning-text { font-size: 12px; color: hsl(30, 6%, 45%); line-height: 1.6; background: hsl(45, 80%, 96%); border: 1px solid hsl(45, 60%, 85%); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; }
+    .info-text { font-size: 12px; color: hsl(30, 6%, 45%); line-height: 1.6; }
+    .source-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; font-size: 13px; color: hsl(25, 55%, 48%); text-decoration: none; font-weight: 500; }
+    .source-link:hover { text-decoration: underline; }
     .hidden { display: none; }
   </style>
 </head>
@@ -216,79 +59,38 @@
       <h1>设置</h1>
     </div>
 
-    <!-- 修改密码 -->
     <div class="card">
-      <div class="card-title">
-        🔒 加密笔记本密码
-        <span id="statusBadge" class="status-badge status-unset">未设置</span>
-      </div>
-      <p class="card-desc" id="cardDesc">
-        加密使用 AES-GCM 256 位，密钥通过 PBKDF2（10 万次迭代）从密码派生
-      </p>
-
+      <div class="card-title">🔒 加密笔记本密码 <span id="statusBadge" class="status-badge status-unset">未设置</span></div>
+      <p class="card-desc" id="cardDesc">加密使用 AES-GCM 256 位，密钥通过 PBKDF2（10 万次迭代）从密码派生</p>
       <div id="setPasswordSection" class="hidden">
-        <div class="warning-text">
-          ⚠️ 请牢记密码，忘记密码后无法恢复加密内容。
-        </div>
-        <div class="form-group">
-          <label for="newPwd1">新密码</label>
-          <input type="password" id="newPwd1" class="form-input" placeholder="至少 4 位" autocomplete="off" />
-        </div>
-        <div class="form-group">
-          <label for="newPwd2">确认新密码</label>
-          <input type="password" id="newPwd2" class="form-input" placeholder="再次输入新密码" autocomplete="off" />
-        </div>
+        <div class="warning-text">⚠️ 请牢记密码，忘记密码后无法恢复加密内容。</div>
+        <div class="form-group"><label for="newPwd1">新密码</label><input type="password" id="newPwd1" class="form-input" placeholder="至少 4 位" autocomplete="off" /></div>
+        <div class="form-group"><label for="newPwd2">确认新密码</label><input type="password" id="newPwd2" class="form-input" placeholder="再次输入新密码" autocomplete="off" /></div>
         <div id="setError" class="form-error"></div>
-        <div class="form-actions">
-          <button class="btn btn-primary" id="setBtn">设置密码</button>
-        </div>
+        <div class="form-actions"><button class="btn btn-primary" id="setBtn">设置密码</button></div>
       </div>
-
       <div id="changePasswordSection" class="hidden">
-        <div class="form-group">
-          <label for="oldPwd">当前密码</label>
-          <input type="password" id="oldPwd" class="form-input" placeholder="请输入当前密码" autocomplete="off" />
-        </div>
-        <div class="form-group">
-          <label for="changeNewPwd1">新密码</label>
-          <input type="password" id="changeNewPwd1" class="form-input" placeholder="至少 4 位" autocomplete="off" />
-        </div>
-        <div class="form-group">
-          <label for="changeNewPwd2">确认新密码</label>
-          <input type="password" id="changeNewPwd2" class="form-input" placeholder="再次输入新密码" autocomplete="off" />
-        </div>
+        <div class="form-group"><label for="oldPwd">当前密码</label><input type="password" id="oldPwd" class="form-input" placeholder="请输入当前密码" autocomplete="off" /></div>
+        <div class="form-group"><label for="changeNewPwd1">新密码</label><input type="password" id="changeNewPwd1" class="form-input" placeholder="至少 4 位" autocomplete="off" /></div>
+        <div class="form-group"><label for="changeNewPwd2">确认新密码</label><input type="password" id="changeNewPwd2" class="form-input" placeholder="再次输入新密码" autocomplete="off" /></div>
         <div id="changeError" class="form-error"></div>
         <div id="changeSuccess" class="form-success"></div>
-        <div class="form-actions">
-          <button class="btn btn-primary" id="changeBtn">修改密码</button>
-        </div>
+        <div class="form-actions"><button class="btn btn-primary" id="changeBtn">修改密码</button></div>
       </div>
     </div>
 
-    <!-- 清空所有笔记 -->
     <div class="card danger-card">
       <div class="card-title">🗑️ 清空所有笔记</div>
-      <p class="card-desc">
-        删除全部备忘录（包括加密笔记本中的内容），此操作不可撤销。
-      </p>
+      <p class="card-desc">删除全部备忘录（包括加密笔记本中的内容），此操作不可撤销。</p>
       <div id="clearConfirmArea" class="hidden">
-        <div class="warning-text" style="background:hsla(0,50%,50%,0.06);border-color:hsla(0,50%,50%,0.2);color:hsl(0,40%,40%);">
-          ⚠️ 此操作将永久删除所有笔记，且无法恢复！
-        </div>
-        <div class="form-group">
-          <label for="clearConfirmInput">请输入「确认删除」以继续</label>
-          <input type="text" id="clearConfirmInput" class="form-input" placeholder="确认删除" autocomplete="off" />
-        </div>
-        <div class="form-actions">
-          <button class="btn btn-secondary" id="clearCancelBtn">取消</button>
-          <button class="btn btn-danger" id="clearConfirmBtn" disabled>确认清空</button>
-        </div>
+        <div class="warning-text" style="background:hsla(0,50%,50%,0.06);border-color:hsla(0,50%,50%,0.2);color:hsl(0,40%,40%);">⚠️ 此操作将永久删除所有笔记，且无法恢复！</div>
+        <div class="form-group"><label for="clearConfirmInput">请输入「确认删除」以继续</label><input type="text" id="clearConfirmInput" class="form-input" placeholder="确认删除" autocomplete="off" /></div>
+        <div class="form-actions"><button class="btn btn-secondary" id="clearCancelBtn">取消</button><button class="btn btn-danger" id="clearConfirmBtn" disabled>确认清空</button></div>
       </div>
       <div id="clearResult" class="form-success"></div>
       <button class="btn btn-danger" id="clearBtn">清空所有笔记</button>
     </div>
 
-    <!-- 云同步 -->
     <div class="card">
       <div class="card-title">☁️ 云同步</div>
       <p class="card-desc">使用微软 OneDrive 同步笔记，多设备自动同步。</p>
@@ -308,303 +110,81 @@
       <pre id="diagResult" style="display:none;background:hsl(40,20%,94%);padding:10px;border-radius:8px;font-size:12px;max-height:200px;overflow-y:auto;white-space:pre-wrap;margin-top:10px"></pre>
     </div>
 
-    <!-- 关于 -->
+    <div class="card">
+      <div class="card-title">📦 R2 Markdown 同步</div>
+      <p class="card-desc">把每篇笔记以 Markdown 格式同步到 Cloudflare R2（国际站点），多设备备份。</p>
+      <div id="r2AccountInfo" style="margin-bottom:12px;font-size:14px"><span id="r2UserLabel">未登录 R6T5 Hub</span></div>
+      <div id="r2LoginForm" style="display:none;margin-bottom:12px">
+        <input type="email" id="r2Email" placeholder="R6T5 Hub 邮箱" style="width:100%;padding:8px;margin-bottom:6px;border-radius:6px;border:1px solid #ccc">
+        <input type="password" id="r2Pw" placeholder="密码" style="width:100%;padding:8px;margin-bottom:6px;border-radius:6px;border:1px solid #ccc">
+        <button class="btn btn-primary" onclick="r2DoLogin()">登录</button>
+      </div>
+      <div style="margin-bottom:12px">
+        <label style="font-size:14px;cursor:pointer">
+          <input type="checkbox" id="r2EnabledChk" onchange="r2ToggleEnabled(this.checked)" style="margin-right:6px">自动同步（编辑后 3 秒自动上传）
+        </label>
+      </div>
+      <div class="form-actions"><button class="btn btn-primary" onclick="r2ManualSync()">🔄 立即同步</button></div>
+      <div id="r2Status" style="margin-top:10px;font-size:13px;color:hsl(30,6%,45%);min-height:18px"></div>
+    </div>
+
     <div class="card">
       <div class="card-title">ℹ️ 关于我们</div>
-      <p class="info-text">
-        贪吃笔记 v1.0 免费版<br/>
-      </p>
-      <a href="https://github.com/TanchiPanda/OpenNotes" target="_blank" rel="noopener noreferrer" class="source-link">
-        GitHub↗
-      </a>
-      <a href="https://github.com/TanchiPanda/HiNotes/blob/main/%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94.md" target="_blank" rel="noopener noreferrer" class="source-link">
-        完整版↗
-      </a>
+      <p class="info-text">贪吃笔记 v1.0 免费版<br/></p>
+      <a href="https://github.com/TanchiPanda/OpenNotes" target="_blank" rel="noopener noreferrer" class="source-link">GitHub↗</a>
+      <a href="https://github.com/TanchiPanda/HiNotes/blob/main/%E7%89%88%E6%9C%AC%E5%AF%B9%E6%AF%94.md" target="_blank" rel="noopener noreferrer" class="source-link">完整版↗</a>
     </div>
   </div>
 
   <script>
   (function() {
     'use strict';
-
     const STORAGE_KEYS = { TAGS: 'memo_app_tags', NOTES: 'memo_app_notes', ENC: 'memo_app_enc_config' };
     const ENC_TAG_ID = 'tag-encrypted';
     const ENC_PREFIX = 'enc:v1:';
     const ENC_VERIFIER_TEXT = 'memo-encrypted-valid';
-
-    // ===== 工具函数 =====
-    function load(key, fallback) {
-      try {
-        const raw = localStorage.getItem(key);
-        return raw ? JSON.parse(raw) : fallback;
-      } catch(e) { return fallback; }
-    }
-    function save(key, val) {
-      try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {}
-    }
-    function bufToBase64(buf) {
-      const bytes = new Uint8Array(buf);
-      let binary = '';
-      for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
-      return btoa(binary);
-    }
-    function base64ToBuf(b64) {
-      const binary = atob(b64);
-      const bytes = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-      return bytes;
-    }
-
-    // ===== 加密函数 =====
-    async function deriveKey(password, saltBuf) {
-      const enc = new TextEncoder();
-      const keyMaterial = await crypto.subtle.importKey(
-        'raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']
-      );
-      return crypto.subtle.deriveKey(
-        { name: 'PBKDF2', salt: saltBuf, iterations: 100000, hash: 'SHA-256' },
-        keyMaterial,
-        { name: 'AES-GCM', length: 256 },
-        false,
-        ['encrypt', 'decrypt']
-      );
-    }
-
-    async function encryptText(text, key) {
-      const enc = new TextEncoder();
-      const iv = crypto.getRandomValues(new Uint8Array(12));
-      const ciphertext = await crypto.subtle.encrypt(
-        { name: 'AES-GCM', iv: iv }, key, enc.encode(text)
-      );
-      const combined = new Uint8Array(iv.length + ciphertext.byteLength);
-      combined.set(iv);
-      combined.set(new Uint8Array(ciphertext), iv.length);
-      return ENC_PREFIX + bufToBase64(combined.buffer);
-    }
-
-    async function decryptText(encrypted, key) {
-      if (!encrypted || typeof encrypted !== 'string' || !encrypted.startsWith(ENC_PREFIX)) return encrypted;
-      const data = base64ToBuf(encrypted.slice(ENC_PREFIX.length));
-      const iv = data.slice(0, 12);
-      const ciphertext = data.slice(12);
-      const plaintext = await crypto.subtle.decrypt(
-        { name: 'AES-GCM', iv: iv }, key, ciphertext
-      );
-      return new TextDecoder().decode(plaintext);
-    }
-
-    function isEncryptedField(val) {
-      return typeof val === 'string' && val.startsWith(ENC_PREFIX);
-    }
-
-    // ===== UI 逻辑 =====
+    function load(key, fallback) { try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch(e) { return fallback; } }
+    function save(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {} }
+    function bufToBase64(buf) { const bytes = new Uint8Array(buf); let binary = ''; for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]); return btoa(binary); }
+    function base64ToBuf(b64) { const binary = atob(b64); const bytes = new Uint8Array(binary.length); for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i); return bytes; }
+    async function deriveKey(password, saltBuf) { const enc = new TextEncoder(); const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']); return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: saltBuf, iterations: 100000, hash: 'SHA-256' }, keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']); }
+    async function encryptText(text, key) { const enc = new TextEncoder(); const iv = crypto.getRandomValues(new Uint8Array(12)); const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, enc.encode(text)); const combined = new Uint8Array(iv.length + ciphertext.byteLength); combined.set(iv); combined.set(new Uint8Array(ciphertext), iv.length); return ENC_PREFIX + bufToBase64(combined.buffer); }
+    async function decryptText(encrypted, key) { if (!encrypted || typeof encrypted !== 'string' || !encrypted.startsWith(ENC_PREFIX)) return encrypted; const data = base64ToBuf(encrypted.slice(ENC_PREFIX.length)); const iv = data.slice(0, 12); const ciphertext = data.slice(12); const plaintext = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, ciphertext); return new TextDecoder().decode(plaintext); }
+    function isEncryptedField(val) { return typeof val === 'string' && val.startsWith(ENC_PREFIX); }
     const statusBadge = document.getElementById('statusBadge');
     const cardDesc = document.getElementById('cardDesc');
     const setSection = document.getElementById('setPasswordSection');
     const changeSection = document.getElementById('changePasswordSection');
-
     const encConfig = load(STORAGE_KEYS.ENC, null);
     const hasPassword = !!(encConfig && encConfig.salt && encConfig.verifier);
-
-    if (hasPassword) {
-      statusBadge.textContent = '已设置';
-      statusBadge.className = 'status-badge status-set';
-      cardDesc.textContent = '修改密码后，所有加密笔记将使用新密码重新加密。';
-      setSection.classList.add('hidden');
-      changeSection.classList.remove('hidden');
-    } else {
-      statusBadge.textContent = '未设置';
-      statusBadge.className = 'status-badge status-unset';
-      cardDesc.textContent = '为加密笔记本设置密码后，其中的笔记内容将通过 AES-GCM 加密存储在本地。';
-      setSection.classList.remove('hidden');
-      changeSection.classList.add('hidden');
-    }
-
-    // ===== 设置新密码 =====
+    if (hasPassword) { statusBadge.textContent = '已设置'; statusBadge.className = 'status-badge status-set'; cardDesc.textContent = '修改密码后，所有加密笔记将使用新密码重新加密。'; setSection.classList.add('hidden'); changeSection.classList.remove('hidden'); } else { statusBadge.textContent = '未设置'; statusBadge.className = 'status-badge status-unset'; cardDesc.textContent = '为加密笔记本设置密码后，其中的笔记内容将通过 AES-GCM 加密存储在本地。'; setSection.classList.remove('hidden'); changeSection.classList.add('hidden'); }
     const setBtn = document.getElementById('setBtn');
     const setError = document.getElementById('setError');
-
-    async function handleSetPassword() {
-      setError.textContent = '';
-      const pwd1 = document.getElementById('newPwd1').value;
-      const pwd2 = document.getElementById('newPwd2').value;
-
-      if (!pwd1) { setError.textContent = '请输入密码'; return; }
-      if (pwd1.length < 4) { setError.textContent = '密码至少 4 位'; return; }
-      if (pwd1 !== pwd2) { setError.textContent = '两次输入的密码不一致'; return; }
-
-      setBtn.disabled = true;
-      setBtn.textContent = '设置中...';
-
-      try {
-        const saltBuf = crypto.getRandomValues(new Uint8Array(16));
-        const key = await deriveKey(pwd1, saltBuf);
-        const verifier = await encryptText(ENC_VERIFIER_TEXT, key);
-
-        save(STORAGE_KEYS.ENC, {
-          salt: bufToBase64(saltBuf.buffer),
-          verifier: verifier
-        });
-
-        // 刷新页面显示修改密码表单
-        alert('密码设置成功！');
-        location.reload();
-      } catch(e) {
-        setError.textContent = '设置失败：' + e.message;
-        setBtn.disabled = false;
-        setBtn.textContent = '设置密码';
-      }
-    }
-
+    async function handleSetPassword() { setError.textContent = ''; const pwd1 = document.getElementById('newPwd1').value; const pwd2 = document.getElementById('newPwd2').value; if (!pwd1) { setError.textContent = '请输入密码'; return; } if (pwd1.length < 4) { setError.textContent = '密码至少 4 位'; return; } if (pwd1 !== pwd2) { setError.textContent = '两次输入的密码不一致'; return; } setBtn.disabled = true; setBtn.textContent = '设置中...'; try { const saltBuf = crypto.getRandomValues(new Uint8Array(16)); const key = await deriveKey(pwd1, saltBuf); const verifier = await encryptText(ENC_VERIFIER_TEXT, key); save(STORAGE_KEYS.ENC, { salt: bufToBase64(saltBuf.buffer), verifier: verifier }); alert('密码设置成功！'); location.reload(); } catch(e) { setError.textContent = '设置失败：' + e.message; setBtn.disabled = false; setBtn.textContent = '设置密码'; } }
     setBtn.addEventListener('click', handleSetPassword);
-    document.getElementById('newPwd2').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleSetPassword();
-    });
-
-    // ===== 修改密码 =====
+    document.getElementById('newPwd2').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleSetPassword(); });
     const changeBtn = document.getElementById('changeBtn');
     const changeError = document.getElementById('changeError');
     const changeSuccess = document.getElementById('changeSuccess');
-
-    async function handleChangePassword() {
-      changeError.textContent = '';
-      changeSuccess.textContent = '';
-
-      const oldPwd = document.getElementById('oldPwd').value;
-      const newPwd1 = document.getElementById('changeNewPwd1').value;
-      const newPwd2 = document.getElementById('changeNewPwd2').value;
-
-      if (!oldPwd) { changeError.textContent = '请输入当前密码'; return; }
-      if (!newPwd1) { changeError.textContent = '请输入新密码'; return; }
-      if (newPwd1.length < 4) { changeError.textContent = '新密码至少 4 位'; return; }
-      if (newPwd1 !== newPwd2) { changeError.textContent = '两次输入的新密码不一致'; return; }
-      if (oldPwd === newPwd1) { changeError.textContent = '新密码不能与当前密码相同'; return; }
-
-      changeBtn.disabled = true;
-      changeBtn.textContent = '修改中...';
-
-      try {
-        // 1. 用旧密码派生密钥并验证
-        const oldSaltBuf = base64ToBuf(encConfig.salt);
-        const oldKey = await deriveKey(oldPwd, oldSaltBuf);
-
-        let verified;
-        try {
-          verified = await decryptText(encConfig.verifier, oldKey);
-        } catch(e) {
-          verified = null;
-        }
-        if (verified !== ENC_VERIFIER_TEXT) {
-          changeError.textContent = '当前密码错误';
-          changeBtn.disabled = false;
-          changeBtn.textContent = '修改密码';
-          return;
-        }
-
-        // 2. 读取所有笔记，用旧密钥解密加密笔记
-        const notes = load(STORAGE_KEYS.NOTES, []);
-        const decryptedNotes = [];
-        for (const note of notes) {
-          if (note.tagIds.includes(ENC_TAG_ID)) {
-            let title = note.title;
-            let content = note.content;
-            if (isEncryptedField(title)) title = await decryptText(title, oldKey);
-            if (isEncryptedField(content)) content = await decryptText(content, oldKey);
-            decryptedNotes.push({ ...note, title, content });
-          } else {
-            decryptedNotes.push(note);
-          }
-        }
-
-        // 3. 生成新密钥
-        const newSaltBuf = crypto.getRandomValues(new Uint8Array(16));
-        const newKey = await deriveKey(newPwd1, newSaltBuf);
-        const newVerifier = await encryptText(ENC_VERIFIER_TEXT, newKey);
-
-        // 4. 用新密钥重新加密所有加密笔记
-        const reencryptedNotes = [];
-        for (const note of decryptedNotes) {
-          if (note.tagIds.includes(ENC_TAG_ID)) {
-            reencryptedNotes.push({
-              ...note,
-              title: await encryptText(note.title || '无标题', newKey),
-              content: await encryptText(note.content || '', newKey),
-            });
-          } else {
-            reencryptedNotes.push(note);
-          }
-        }
-
-        // 5. 保存新配置和重新加密的笔记
-        save(STORAGE_KEYS.ENC, {
-          salt: bufToBase64(newSaltBuf.buffer),
-          verifier: newVerifier
-        });
-        save(STORAGE_KEYS.NOTES, reencryptedNotes);
-
-        changeSuccess.textContent = '密码修改成功！所有加密笔记已使用新密码重新加密。';
-        document.getElementById('oldPwd').value = '';
-        document.getElementById('changeNewPwd1').value = '';
-        document.getElementById('changeNewPwd2').value = '';
-        changeBtn.disabled = false;
-        changeBtn.textContent = '修改密码';
-      } catch(e) {
-        changeError.textContent = '修改失败：' + e.message;
-        changeBtn.disabled = false;
-        changeBtn.textContent = '修改密码';
-      }
-    }
-
+    async function handleChangePassword() { changeError.textContent = ''; changeSuccess.textContent = ''; const oldPwd = document.getElementById('oldPwd').value; const newPwd1 = document.getElementById('changeNewPwd1').value; const newPwd2 = document.getElementById('changeNewPwd2').value; if (!oldPwd) { changeError.textContent = '请输入当前密码'; return; } if (!newPwd1) { changeError.textContent = '请输入新密码'; return; } if (newPwd1.length < 4) { changeError.textContent = '新密码至少 4 位'; return; } if (newPwd1 !== newPwd2) { changeError.textContent = '两次输入的新密码不一致'; return; } if (oldPwd === newPwd1) { changeError.textContent = '新密码不能与当前密码相同'; return; } changeBtn.disabled = true; changeBtn.textContent = '修改中...'; try { const oldSaltBuf = base64ToBuf(encConfig.salt); const oldKey = await deriveKey(oldPwd, oldSaltBuf); let verified; try { verified = await decryptText(encConfig.verifier, oldKey); } catch(e) { verified = null; } if (verified !== ENC_VERIFIER_TEXT) { changeError.textContent = '当前密码错误'; changeBtn.disabled = false; changeBtn.textContent = '修改密码'; return; } const notes = load(STORAGE_KEYS.NOTES, []); const decryptedNotes = []; for (const note of notes) { if (note.tagIds.includes(ENC_TAG_ID)) { let title = note.title; let content = note.content; if (isEncryptedField(title)) title = await decryptText(title, oldKey); if (isEncryptedField(content)) content = await decryptText(content, oldKey); decryptedNotes.push({ ...note, title, content }); } else { decryptedNotes.push(note); } } const newSaltBuf = crypto.getRandomValues(new Uint8Array(16)); const newKey = await deriveKey(newPwd1, newSaltBuf); const newVerifier = await encryptText(ENC_VERIFIER_TEXT, newKey); const reencryptedNotes = []; for (const note of decryptedNotes) { if (note.tagIds.includes(ENC_TAG_ID)) { reencryptedNotes.push({ ...note, title: await encryptText(note.title || '无标题', newKey), content: await encryptText(note.content || '', newKey) }); } else { reencryptedNotes.push(note); } } save(STORAGE_KEYS.ENC, { salt: bufToBase64(newSaltBuf.buffer), verifier: newVerifier }); save(STORAGE_KEYS.NOTES, reencryptedNotes); changeSuccess.textContent = '密码修改成功！所有加密笔记已使用新密码重新加密。'; document.getElementById('oldPwd').value = ''; document.getElementById('changeNewPwd1').value = ''; document.getElementById('changeNewPwd2').value = ''; changeBtn.disabled = false; changeBtn.textContent = '修改密码'; } catch(e) { changeError.textContent = '修改失败：' + e.message; changeBtn.disabled = false; changeBtn.textContent = '修改密码'; } }
     changeBtn.addEventListener('click', handleChangePassword);
-    document.getElementById('changeNewPwd2').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleChangePassword();
-    });
-
-    // ===== 清空所有笔记 =====
+    document.getElementById('changeNewPwd2').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleChangePassword(); });
     const clearBtn = document.getElementById('clearBtn');
     const clearConfirmArea = document.getElementById('clearConfirmArea');
     const clearCancelBtn = document.getElementById('clearCancelBtn');
     const clearConfirmBtn = document.getElementById('clearConfirmBtn');
     const clearConfirmInput = document.getElementById('clearConfirmInput');
     const clearResult = document.getElementById('clearResult');
-
-    clearBtn.addEventListener('click', () => {
-      clearConfirmArea.classList.remove('hidden');
-      clearBtn.classList.add('hidden');
-      clearResult.textContent = '';
-      setTimeout(() => clearConfirmInput.focus(), 50);
-    });
-
-    clearCancelBtn.addEventListener('click', () => {
-      clearConfirmArea.classList.add('hidden');
-      clearBtn.classList.remove('hidden');
-      clearConfirmInput.value = '';
-      clearConfirmBtn.disabled = true;
-    });
-
-    clearConfirmInput.addEventListener('input', () => {
-      clearConfirmBtn.disabled = clearConfirmInput.value !== '确认删除';
-    });
-
-    clearConfirmBtn.addEventListener('click', () => {
-      if (clearConfirmInput.value !== '确认删除') return;
-      try {
-        const count = load(STORAGE_KEYS.NOTES, []).length;
-        save(STORAGE_KEYS.NOTES, []);
-        clearResult.textContent = `已清空 ${count} 条笔记。`;
-        clearConfirmArea.classList.add('hidden');
-        clearBtn.classList.remove('hidden');
-        clearConfirmInput.value = '';
-        clearConfirmBtn.disabled = true;
-      } catch(e) {
-        clearResult.textContent = '清空失败：' + e.message;
-        clearResult.style.color = 'hsl(0, 50%, 50%)';
-      }
-    });
+    clearBtn.addEventListener('click', () => { clearConfirmArea.classList.remove('hidden'); clearBtn.classList.add('hidden'); clearResult.textContent = ''; setTimeout(() => clearConfirmInput.focus(), 50); });
+    clearCancelBtn.addEventListener('click', () => { clearConfirmArea.classList.add('hidden'); clearBtn.classList.remove('hidden'); clearConfirmInput.value = ''; clearConfirmBtn.disabled = true; });
+    clearConfirmInput.addEventListener('input', () => { clearConfirmBtn.disabled = clearConfirmInput.value !== '确认删除'; });
+    clearConfirmBtn.addEventListener('click', () => { if (clearConfirmInput.value !== '确认删除') return; try { const count = load(STORAGE_KEYS.NOTES, []).length; save(STORAGE_KEYS.NOTES, []); clearResult.textContent = `已清空 ${count} 条笔记。`; clearConfirmArea.classList.add('hidden'); clearBtn.classList.remove('hidden'); clearConfirmInput.value = ''; clearConfirmBtn.disabled = true; } catch(e) { clearResult.textContent = '清空失败：' + e.message; clearResult.style.color = 'hsl(0, 50%, 50%)'; } });
   })();
   </script>
   <script src="auth.js"></script>
   <script src="sync.js"></script>
+  <script src="sbauth.js"></script>
+  <script src="r2-sync.js"></script>
   <script>
     function doLogin(){ loginWithGitHub(); }
     function updateSyncUI(){
@@ -636,24 +216,11 @@
         const r = await syncDiagnose();
         const token = localStorage.getItem("tanchiNotesMSAToken");
         const exp = localStorage.getItem("tanchiNotesMSAExpires");
-        el.textContent = r + "\n---\nToken: " + (token?token.slice(0,20)+"…":"无") +
-          "\n过期: " + (exp?new Date(Number(exp)).toLocaleString():"无");
+        el.textContent = r + "\n---\nToken: " + (token?token.slice(0,20)+"…":"无") + "\n过期: " + (exp?new Date(Number(exp)).toLocaleString():"无");
       }catch(e){ el.textContent = "诊断失败: "+e.message; }
     }
-    function formatBytes(b){
-      if(!b) return "0 B";
-      if(b>=1073741824) return (b/1073741824).toFixed(1)+" GB";
-      if(b>=1048576) return (b/1048576).toFixed(1)+" MB";
-      return (b/1024).toFixed(0)+" KB";
-    }
-    async function refreshToken(){
-      const el = document.getElementById("diagResult");
-      el.style.display = "block";
-      el.textContent = "正在刷新 Token…";
-      const ok = await refreshAccessToken();
-      el.textContent = ok ? "✅ Token 刷新成功" : "❌ 刷新失败，请重新登录";
-      if(ok) loadQuota();
-    }
+    function formatBytes(b){ if(!b) return "0 B"; if(b>=1073741824) return (b/1073741824).toFixed(1)+" GB"; if(b>=1048576) return (b/1048576).toFixed(1)+" MB"; return (b/1024).toFixed(0)+" KB"; }
+    async function refreshToken(){ const el = document.getElementById("diagResult"); el.style.display = "block"; el.textContent = "正在刷新 Token…"; const ok = await refreshAccessToken(); el.textContent = ok ? "✅ Token 刷新成功" : "❌ 刷新失败，请重新登录"; if(ok) loadQuota(); }
     async function loadQuota(){
       const box = document.getElementById("quotaInfo");
       const txt = document.getElementById("quotaText");
@@ -663,11 +230,7 @@
       txt.textContent = "加载中…";
       try{
         let resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", { headers:{Authorization:"Bearer "+token} });
-        if(resp.status===401 && typeof refreshAccessToken==="function"){
-          await refreshAccessToken();
-          const t2 = localStorage.getItem("tanchiNotesMSAToken");
-          resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", { headers:{Authorization:"Bearer "+t2} });
-        }
+        if(resp.status===401 && typeof refreshAccessToken==="function"){ await refreshAccessToken(); const t2 = localStorage.getItem("tanchiNotesMSAToken"); resp = await fetch("https://graph.microsoft.com/v1.0/me/drive", { headers:{Authorization:"Bearer "+t2} }); }
         if(!resp.ok){ txt.textContent = "N/A"; return; }
         const d = await resp.json();
         const q = d.quota;
@@ -679,6 +242,22 @@
     if(isLoggedIn() && typeof syncPull==="function") syncPull(updateSyncUI);
     updateSyncUI();
     if(isLoggedIn()) loadQuota();
+    async function r2RefreshUI() {
+      var label = document.getElementById("r2UserLabel");
+      var loginForm = document.getElementById("r2LoginForm");
+      var chk = document.getElementById("r2EnabledChk");
+      try { var u = (typeof sbGetUser === "function") ? sbGetUser() : null; if (u && u.email) { label.textContent = "已登录：" + u.email; loginForm.style.display = "none"; } else { label.textContent = "未登录 R6T5 Hub"; loginForm.style.display = ""; } } catch (e) { label.textContent = "未登录 R6T5 Hub"; loginForm.style.display = ""; }
+      chk.checked = (typeof r2IsEnabled === "function") ? r2IsEnabled() : false;
+    }
+    async function r2DoLogin() {
+      var email = document.getElementById("r2Email").value.trim();
+      var pw = document.getElementById("r2Pw").value;
+      if (!email || !pw) { alert("请输入邮箱和密码"); return; }
+      try { var client = await sbInit(); var { data, error } = await client.auth.signInWithPassword({ email: email, password: pw }); if (error) throw error; await sbRefreshUser(); document.getElementById("r2Pw").value = ""; r2RefreshUI(); } catch (e) { alert("登录失败：" + (e && e.message)); }
+    }
+    function r2ToggleEnabled(on) { r2SetEnabled(on); if (on) r2ManualSync(); }
+    function r2ManualSync() { var status = document.getElementById("r2Status"); r2Sync(function (msg) { status.textContent = msg; }); }
+    r2RefreshUI();
   </script>
 </body>
 </html>
