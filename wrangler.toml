@@ -1,0 +1,24 @@
+# TanchiNotes · Worker + 静态资源一体
+# 部署：Workers Builds 自动构建（push 到 main）
+name = "tanchinotes"
+main = "worker/index.js"
+compatibility_date = "2026-11-01"
+
+[assets]
+directory = "."
+binding = "ASSETS"
+# 只把 /api/* 交给 Worker，其余静态资源直出
+run_worker_first = ["/api/*"]
+
+[ai]
+binding = "AI"
+
+# 可选：绑定 KV 做跨实例额度计数（未绑定时退化为单实例内存计数）
+# 在 CF 控制台 → Workers & Pages → KV → 新建命名空间，把 id 填到下面
+# [[kv_namespaces]]
+# binding = "AI_QUOTA"
+# id = "<KV_NAMESPACE_ID>"
+
+[vars]
+# 想换模型时改这里，无需改代码
+AI_MODEL = "@cf/zai-org/glm-4.7-flash"
