@@ -379,6 +379,8 @@
     async function request(payload, userLabel) {
       if (state.busy) return;
       const token = await getToken();
+      const canReplace = (payload.action === "rewrite" || payload.action === "translate") && !!state.sel;
+
       state.busy = true;
       send.disabled = true;
       if (userLabel) addMsg("user", escapeHtml(userLabel));
@@ -387,34 +389,79 @@
       try {
         const headers = { "Content-Type": "application/json" };
         if (token) headers.Authorization = "Bearer " + token;
-        const r = await fetch(API, {
+
+        const r = await fetch(API + "?stream=1", {
           method: "POST",
           headers,
-          body: JSON.stringify(
-            Object.assign({ selection: state.sel, note: noteText() }, payload)
-          ),
+          body: JSON.stringify(Object.assign({ selection: state.sel, note: noteText() }, payload)),
         });
-        let d = null;
-        try { d = await r.json(); } catch (e) { d = null; }
-        loading.remove();
 
-        if (!r.ok || !d || !d.ok) {
-          const msg =
-            (d && d.message) ||
-            (r.status === 401 ? "登录状态已过期，请重新登录" : "请求失败（" + r.status + "）");
-          addMsg("bot err", escapeHtml(msg));
-          if (r.status === 401) refreshQuota();
+        if (!r.ok) {
+          let d = null;
+          try { d = await r.json(); } catch (e) { d = null; }
+          loading.remove();
+          addMsg("bot err", escapeHtml((d && d.message) || "请求失败（" + r.status + "）"));
           return;
         }
 
-        if (typeof d.left === "number") {
-          quotaEl.textContent = d.used + " / " + d.limit;
+        const usedH = r.headers.get("X-AI-Used") || r.headers.get("x-ai-used");
+        const limitH = r.headers.get("X-AI-Limit") || r.headers.get("x-ai-limit");
+        if (usedH && limitH) quotaEl.textContent = usedH + " / " + limitH;
+
+        const ct = r.headers.get("content-type") || "";
+        if (ct.indexOf("text/event-stream") >= 0 && r.body) {
+          loading.remove();
+          const holder = addMsg("bot", '<div class="aiw-text markdown-body"></div>');
+          const textEl = holder.querySelector(".aiw-text");
+          let acc = "";
+          let raf = 0;
+          const paint = () => {
+            textEl.innerHTML = acc ? renderMarkdown(acc) : '<span style="opacity:.4">…</span>';
+            scroll();
+          };
+          const reader = r.body.getReader();
+          const dec = new TextDecoder();
+          while (true) {
+            const chunk = await reader.read();
+            if (chunk.done) break;
+            const raw = dec.decode(chunk.value, { stream: true });
+            raw.split("\n").forEach((line) => {
+              const t = line.trim();
+              if (t.indexOf("data:") !== 0) return;
+              const payloadStr = t.slice(5).trim();
+              if (!payloadStr || payloadStr === "[DONE]") return;
+              try {
+                const j = JSON.parse(payloadStr);
+                const piece =
+                  (typeof j.response === "string" ? j.response : "") ||
+                  (j.choices && j.choices[0] && j.choices[0].delta && j.choices[0].delta.content) || "";
+                if (piece) acc += piece;
+              } catch (e) {
+                acc += payloadStr;
+              }
+            });
+            if (!raf) raf = requestAnimationFrame(() => { raf = 0; paint(); });
+          }
+          paint();
+          holder.remove();
+          if (acc.trim()) botCard(acc.trim(), { canReplace });
+          else addMsg("bot err", "模型没返回内容，稍后再试一次");
+          return;
         }
-        const canReplace = payload.action === "rewrite" || payload.action === "translate";
-        botCard(d.text, { canReplace: canReplace && !!state.sel });
+
+        // 非流式回退
+        let d = null;
+        try { d = await r.json(); } catch (e) { d = null; }
+        loading.remove();
+        if (!d || !d.ok) {
+          addMsg("bot err", escapeHtml((d && d.message) || "请求失败，请稍后再试"));
+          return;
+        }
+        if (typeof d.left === "number") quotaEl.textContent = d.used + " / " + d.limit;
+        botCard(d.text, { canReplace });
       } catch (e) {
         loading.remove();
-        addMsg("bot err", "网络异常，稍后重试（" + escapeHtml(String(e.message || e)) + "）");
+        addMsg("bot err", "网络异常，稍后再试（" + escapeHtml(String(e.message || e)) + "）");
       } finally {
         state.busy = false;
         send.disabled = false;
