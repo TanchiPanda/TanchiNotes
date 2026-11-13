@@ -185,6 +185,8 @@
       const ta = editorTextarea();
       state.ta = ta;
       if (!ta) return;
+      // 只有焦点还在正文里时才更新选区，避免点面板按钮时把已有选区清空
+      const focused = document.activeElement === ta;
       const s = ta.selectionStart, e = ta.selectionEnd;
       const text = ta.value.slice(s, e);
       if (text && text.trim()) {
@@ -195,7 +197,7 @@
           state.selEnd = e;
           renderSel();
         }
-      } else if (state.sel) {
+      } else if (state.sel && focused) {
         state.sel = "";
         state.selStart = state.selEnd = 0;
         renderSel();
