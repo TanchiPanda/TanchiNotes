@@ -4,7 +4,9 @@
 (function () {
   "use strict";
 
-  const API = "/api/ai";
+  // 默认走 wordgm Worker 的跨域接口；若将来 tcnotes 域名改挂 Worker，
+  // 在页面里设 window.AIW_ENDPOINT = "/api/ai" 即可切回同域。
+  const API = window.AIW_ENDPOINT || "https://wordgm.r6t5.dpdns.org/api/notes-ai";
   const state = {
     open: false,
     sel: "",
